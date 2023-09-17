@@ -22,6 +22,7 @@ import { GuardModule } from './guard/guard.module';
 // 连接数据库
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DbtestModule } from './dbtest/dbtest.module';
+import { UsercurdModule } from './usercurd/usercurd.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { DbtestModule } from './dbtest/dbtest.module';
     SpiderModule,
     GuardModule,
     DbtestModule,
+    UsercurdModule,
   ],
   controllers: [AppController, DemoController], // 路由
   // 提供者
