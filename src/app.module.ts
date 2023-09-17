@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppService2 } from './app.service2';
-import { UserService } from './user/user.service';
+// import { UserService } from './user/user.service';
 import { DemoController } from './demo/demo.controller';
 import { DemoModule } from './demo/demo.module';
 import { UserModule } from './user/user.module';
@@ -23,6 +23,7 @@ import { GuardModule } from './guard/guard.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DbtestModule } from './dbtest/dbtest.module';
 import { UsercurdModule } from './usercurd/usercurd.module';
+import { MangerModule } from './manger/manger.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { UsercurdModule } from './usercurd/usercurd.module';
     GuardModule,
     DbtestModule,
     UsercurdModule,
+    MangerModule,
   ],
   controllers: [AppController, DemoController], // 路由
   // 提供者
