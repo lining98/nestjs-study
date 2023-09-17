@@ -21,7 +21,7 @@ export class HttpFilter implements ExceptionFilter {
       success: false,
       time: new Date(),
       data: exception,
-      status,
+      status:status,
       path: request.url,
     });
   }

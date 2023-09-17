@@ -15,11 +15,30 @@ import { UploadModule } from './upload/upload.module';
 import { PModule } from './p/p.module';
 import { LoginModule } from './login/login.module';
 import { SpiderModule } from './spider/spider.module';
+import { GuardModule } from './guard/guard.module';
 
 // app.module.ts 根模块用于处理其他类的引用与共享
 
+// 连接数据库
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DbtestModule } from './dbtest/dbtest.module';
+
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql', //数据库类型
+      username: 'root', //账号
+      password: '123456', //密码
+      host: 'localhost', //host
+      port: 3306, //
+      database: 'db', //库名
+      // entities: [__dirname + '/**/*.entity{.ts,.js}'], //实体文件
+      synchronize: true, //synchronize字段代表是否自动将实体类同步到数据库(开发环境可以使用，建议生产环境不要使用，会出现问题)
+      retryDelay: 500, //重试连接数据库间隔
+      retryAttempts: 10, //重试连接数据库的次数
+      autoLoadEntities: true, //如果为true,将自动加载实体 forFeature()方法注册的每个实体都将自动添加到配置对象的实体数组中
+    }),
+
     DemoModule,
     UserModule,
     User2Module,
@@ -31,6 +50,8 @@ import { SpiderModule } from './spider/spider.module';
     PModule,
     LoginModule,
     SpiderModule,
+    GuardModule,
+    DbtestModule,
   ],
   controllers: [AppController, DemoController], // 路由
   // 提供者
